@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Dice
 {
-    public abstract class YahtzeeHandBase
+    internal abstract class YahtzeeHandBase
     {
         public int Score { get; set; }
         public string Name { get; set; }

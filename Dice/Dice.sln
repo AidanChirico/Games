@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dice", "Dice\Dice.csproj", "{E580C2D5-8896-4BD1-A509-640A1997A217}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YathzeeHandTest.cs", "YathzeeHandTest.cs\YathzeeHandTest.cs.csproj", "{9B811713-C745-4807-B4DB-E16146A889B8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiceTests", "DiceTests\DiceTests.csproj", "{9B811713-C745-4807-B4DB-E16146A889B8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

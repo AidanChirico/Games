@@ -1,7 +1,7 @@
 using Dice;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace YathzeeHandTest.cs
+namespace YathzeeHandTest
 {
     [TestClass]
     public class HandsTesting
@@ -75,6 +75,16 @@ namespace YathzeeHandTest.cs
         {
             var likeFaces = new LikeFaces(face);
             int score = likeFaces.DetectHand(dice);
+
+            Assert.AreEqual(expectedScore, score);
+        }
+
+        [TestMethod]
+        [DataRow(16, 5, 5, 2, 1, 3)]
+        public void Chance_Test(int expectedScore, params int[] dice)
+        {
+            var chance = new Chance();
+            int score = chance.DetectHand(dice);
 
             Assert.AreEqual(expectedScore, score);
         }

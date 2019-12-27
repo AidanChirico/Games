@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Dice
 {
-    public class HandEvaluater
+    internal class HandEvaluater
     {
         private readonly List<YahtzeeHandBase> _hands;
         

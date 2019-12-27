@@ -1,6 +1,6 @@
 ﻿namespace Dice
 {
-    public class TrackedHand
+    internal class TrackedHand
     {
         public string Name { get; private set; }
         public int Score { get; set; }

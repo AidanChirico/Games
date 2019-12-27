@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Dice
 {
-    public class Yahtzee : YahtzeeHandBase
+    internal class Yahtzee : YahtzeeHandBase
     {
         public Yahtzee()
         {

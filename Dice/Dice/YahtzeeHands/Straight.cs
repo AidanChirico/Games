@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dice
 {
-    public class Straight : YahtzeeHandBase
+    internal class Straight : YahtzeeHandBase
     {
         private readonly int _straightLength;
         private readonly int _score;

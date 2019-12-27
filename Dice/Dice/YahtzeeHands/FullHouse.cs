@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Dice
 {
-    public class FullHouse : YahtzeeHandBase
+    internal class FullHouse : YahtzeeHandBase
     {
         public FullHouse()
         {

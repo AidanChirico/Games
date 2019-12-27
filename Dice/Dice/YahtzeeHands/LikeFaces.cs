@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Dice
 {
-    public class LikeFaces : YahtzeeHandBase
+    internal class LikeFaces : YahtzeeHandBase
     {
         private readonly int _face;
         private static readonly IReadOnlyDictionary<int, string> _names = new Dictionary<int, string>

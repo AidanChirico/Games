@@ -7,7 +7,7 @@ namespace Dice
     /// <summary>
     /// Detects a 3 of a kind or a 4 of a kind.
     /// </summary>
-    public class XOfAKind : YahtzeeHandBase
+    internal class XOfAKind : YahtzeeHandBase
     {
         private readonly int _expectedLength;
 

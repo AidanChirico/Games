@@ -6,7 +6,6 @@ namespace Dice
 {
     internal class DiceRoll
     {
-
         private static readonly string[] _asciiDice;
         private readonly Random _rand = new Random();
 
