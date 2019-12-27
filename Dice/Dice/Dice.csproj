@@ -46,21 +46,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Chance.cs" />
+    <Compile Include="YahtzeeHands\Chance.cs" />
     <Compile Include="DiceRoll.cs" />
-    <Compile Include="FullHouse.cs" />
-    <Compile Include="GameManager.cs" />
+    <Compile Include="YahtzeeHands\FullHouse.cs" />
+    <Compile Include="UserInput\InputManager.cs" />
     <Compile Include="GamePlayer.cs" />
     <Compile Include="HandEvaluater.cs" />
-    <Compile Include="LikeFaces.cs" />
+    <Compile Include="YahtzeeHands\LikeFaces.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Straight.cs" />
+    <Compile Include="YahtzeeHands\Straight.cs" />
     <Compile Include="TrackedHand.cs" />
-    <Compile Include="XOfAKind.cs" />
+    <Compile Include="UserInput\MainMenu.cs" />
+    <Compile Include="YahtzeeHands\XOfAKind.cs" />
     <Compile Include="TrackedDice.cs" />
-    <Compile Include="Yahtzee.cs" />
-    <Compile Include="YahtzeeHandBase.cs" />
+    <Compile Include="YahtzeeHands\Yahtzee.cs" />
+    <Compile Include="YahtzeeHands\YahtzeeHandBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

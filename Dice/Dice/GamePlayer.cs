@@ -1,16 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Dice
 {
-    class GamePlayer
+    internal class GamePlayer
     {
-        private GameManager gameManager = new GameManager();
-        private DiceRoll diceRoll = new DiceRoll();
+        private readonly DiceRoll diceRoll = new DiceRoll();
         private readonly HandEvaluater _handEvaluator = new HandEvaluater();
+
         private int _rollCount = 0;
         private int _diceAmount = 0;
 
@@ -18,13 +15,11 @@ namespace Dice
         /// Plays a game of dice.
         /// Let's the user choose how many 6-sided dice to roll, and prints the results and sum.
         /// </summary>
-
         public void PlayDice()
         {
             while (true)
             {
-                _diceAmount = gameManager.AskForNumberOfDice();
-
+                _diceAmount = InputManager.AskForNumberOfDice();
                 if (_diceAmount == 0)
                 {
                     break;
@@ -42,7 +37,6 @@ namespace Dice
 
         /// <summary>
         /// Plays a game of Yatzee.
-        /// Warning: This game is incomplete and may have a few bugs.
         /// </summary>
         public void PlayYahtzee()
         {
@@ -50,26 +44,13 @@ namespace Dice
 
             while (true) // Allow rerolls
             {
-                if (_rollCount == 0)
-                {
-                    if (_diceAmount == 0)
-                    {
-                        break;
-                    }
-
-                    diceRoll.Dice = diceRoll.RollDice(_diceAmount);
-                }
-
-                diceRoll.Dice = diceRoll.RollDice(_diceAmount);
+                diceRoll.RollDice(_diceAmount);
                 ++_rollCount;
 
                 Console.WriteLine();
                 Console.WriteLine($"Roll {_rollCount} of 3!");
 
-                for (int i = 0; i < diceRoll.Dice.Count; i++)
-                {
-                    diceRoll.PrintDice();
-                }
+                diceRoll.PrintDice();
 
                 var results = _handEvaluator.EvaluateHand(diceRoll.Dice.Select(d => d.Value).ToList());
 
@@ -81,11 +62,14 @@ namespace Dice
 
                 if (_rollCount > 2)
                 {
+                    Console.WriteLine($"Turn is over. Press any key to start next turn.");
+                    Console.ReadKey();
                     _rollCount = 0;
                     diceRoll.Dice.Clear();
                     continue;
                 }
 
+                // Present dice for eval
                 while (true)
                 {
                     Console.WriteLine("\nToggle a die to retain by entering its number, or type 'r' to roll.");
@@ -95,18 +79,17 @@ namespace Dice
                         break;
                     }
 
-                    if (!int.TryParse(input, out int diceNumber) || diceNumber < 1 || diceNumber > diceRoll.Dice.Count)
+                    if (!int.TryParse(input, out int diceNumber)
+                        || diceNumber < 1
+                        || diceNumber > diceRoll.Dice.Count)
                     {
                         Console.WriteLine($"Invalid input: {input}.");
                         continue;
                     }
 
-                    --diceNumber;
+                    --diceNumber; // move to 0 index for array deref
                     diceRoll.Dice[diceNumber].Keep = !diceRoll.Dice[diceNumber].Keep;
-                    for (int i = 0; i < diceRoll.Dice.Count; i++)
-                    {
-                        diceRoll.PrintDice();
-                    }
+                    diceRoll.PrintDice();
                 }
             }
         }

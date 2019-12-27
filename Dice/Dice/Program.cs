@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dice.UserInput;
+using System;
 
 namespace Dice
 {
@@ -6,36 +7,28 @@ namespace Dice
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome to dice in C#!");
+            Console.WriteLine("Welcome to Aidan's games in C#!");
             Console.WriteLine();
 
             var gamePlayer = new GamePlayer();
-            string gameToPlay;
-            bool continuePlaying = true;
+            MainMenu mainMenu;
 
-            while (continuePlaying)
+            do
             {
-                Console.WriteLine("Select a game to play or press q to quit the application.\nCurrently, we have Dice and Yahtzee.");
-
-                gameToPlay = Console.ReadLine();
-
-                Console.WriteLine();
-
-                switch (gameToPlay)
+                mainMenu = InputManager.PresentMainMenu();
+                switch (mainMenu)
                 {
-                    case "Dice":
+                    case MainMenu.Dice:
                         gamePlayer.PlayDice();
                         break;
-                    case "Yahtzee":
+
+                    case MainMenu.Yahtzee:
                         gamePlayer.PlayYahtzee();
                         break;
-                    case "q":
-                        continuePlaying = false;
-                        break;
                 }
-            }
+            } while (mainMenu != MainMenu.Quit);
 
-            Console.WriteLine("Application has quit. Press any key to close.");
+            Console.WriteLine("Press any key to close.");
             Console.ReadKey();
         }
     }

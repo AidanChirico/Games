@@ -1,6 +1,5 @@
 using Dice;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Collections.Generic;
 
 namespace YathzeeHandTest.cs
 {

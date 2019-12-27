@@ -8,8 +8,8 @@ namespace Dice
 {
     public class Straight : YahtzeeHandBase
     {
-        private int _straightLength;
-        private int _score;
+        private readonly int _straightLength;
+        private readonly int _score;
 
         public Straight(int straightLength)
         {
@@ -20,10 +20,12 @@ namespace Dice
                     Name = "Large Straight";
                     _score =  40;
                     break;
+
                 case 4:
                     Name = "Small Straight";
                     _score = 30;
                     break;
+
                 default:
                     throw new InvalidOperationException("The Yahtzee hand straight must consist of four or more consecutive dice.");
             }
@@ -35,11 +37,11 @@ namespace Dice
 
             int currentStraight = 1;
             
-            for (int i = 0; i < dice.Count - 1; i++)
+            for (int i = 0; i < dice.Count - 1; ++i)
             {
                 if (dice[i] + 1 == dice[i + 1])
                 {
-                    currentStraight++;
+                    ++currentStraight;
 
                     if (currentStraight >= _straightLength)
                     {

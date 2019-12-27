@@ -4,16 +4,17 @@ using System.Linq;
 
 namespace Dice
 {
-    class DiceRoll
+    internal class DiceRoll
     {
-        internal List<TrackedDice> Dice { get; set; }
 
+        private static readonly string[] _asciiDice;
         private readonly Random _rand = new Random();
-        private readonly string[] _asciiDice;
+
+        public List<TrackedDice> Dice { get; set; } = new List<TrackedDice>(0);
+
         public int Sum => Dice.Sum(x => x.Value);
 
-
-        public DiceRoll()
+        static DiceRoll()
         {
             _asciiDice = new[]
             {
@@ -26,8 +27,7 @@ namespace Dice
             };
         }
 
-
-        internal List<TrackedDice> RollDice(int numberOfDice)
+        internal void RollDice(int numberOfDice)
         {
             var newRoll = new List<TrackedDice>(numberOfDice);
             foreach (var die in Dice)
@@ -38,13 +38,12 @@ namespace Dice
                 }
             }
 
-            for (int i = newRoll.Count; i < numberOfDice; i++)
+            for (int i = newRoll.Count; i < numberOfDice; ++i)
             {
                 newRoll.Add(new TrackedDice(_rand.Next(1, 7)));
             }
 
             Dice = newRoll;
-            return Dice;
         }
 
         internal void PrintDice()
@@ -54,7 +53,7 @@ namespace Dice
             foreach (var die in Dice)
             {
                 char isKept = die.Keep ? 'x' : ' ';
-                Console.WriteLine(string.Format(_asciiDice[die.Value - 1], number, isKept));
+                Console.WriteLine(_asciiDice[die.Value - 1], number, isKept);
 
                 number++;
             }

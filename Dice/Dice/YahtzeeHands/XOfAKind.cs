@@ -19,11 +19,13 @@ namespace Dice
                 case 3:
                     Name = "Three of A Kind";
                     break;
+
                 case 4:
                     Name = "Four of A Kind";
                     break;
+
                 default:
-                    throw new InvalidOperationException($"{expectedLength} of a kind is not supported by this class.");
+                    throw new InvalidOperationException($"{expectedLength} of a kind is not supported by this hand.");
             }
         }
 
