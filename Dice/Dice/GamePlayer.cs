@@ -62,35 +62,21 @@ namespace Dice
 
                 if (_rollCount > 2)
                 {
-                    Console.WriteLine($"Turn is over. Press any key to start next turn.");
-                    Console.ReadKey();
+                    Console.WriteLine();
+                    Console.WriteLine($"Turn is over. Press enter to start next turn or press q to quit Yahtzee.");
+
                     _rollCount = 0;
                     diceRoll.Dice.Clear();
+
+                    if (InputManager.DetectQuit())
+                    {
+                        break;
+                    }
                     continue;
                 }
 
                 // Present dice for eval
-                while (true)
-                {
-                    Console.WriteLine("\nToggle a die to retain by entering its number, or type 'r' to roll.");
-                    string input = Console.ReadLine();
-                    if (input == "r")
-                    {
-                        break;
-                    }
-
-                    if (!int.TryParse(input, out int diceNumber)
-                        || diceNumber < 1
-                        || diceNumber > diceRoll.Dice.Count)
-                    {
-                        Console.WriteLine($"Invalid input: {input}.");
-                        continue;
-                    }
-
-                    --diceNumber; // move to 0 index for array deref
-                    diceRoll.Dice[diceNumber].Keep = !diceRoll.Dice[diceNumber].Keep;
-                    diceRoll.PrintDice();
-                }
+                InputManager.AskForDiceToKeep(diceRoll);
             }
         }
     }

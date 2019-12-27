@@ -8,7 +8,6 @@ namespace Dice
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to Aidan's games in C#!");
-            Console.WriteLine();
 
             var gamePlayer = new GamePlayer();
             MainMenu mainMenu;
@@ -28,6 +27,7 @@ namespace Dice
                 }
             } while (mainMenu != MainMenu.Quit);
 
+            Console.WriteLine();
             Console.WriteLine("Press any key to close.");
             Console.ReadKey();
         }
