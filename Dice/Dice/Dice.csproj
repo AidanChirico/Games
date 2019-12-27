@@ -49,6 +49,8 @@
     <Compile Include="Chance.cs" />
     <Compile Include="DiceRoll.cs" />
     <Compile Include="FullHouse.cs" />
+    <Compile Include="GameManager.cs" />
+    <Compile Include="GamePlayer.cs" />
     <Compile Include="HandEvaluater.cs" />
     <Compile Include="LikeFaces.cs" />
     <Compile Include="Program.cs" />

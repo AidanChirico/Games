@@ -9,7 +9,7 @@ namespace Dice
             Console.WriteLine("Welcome to dice in C#!");
             Console.WriteLine();
 
-            var diceRoll = new DiceRoll();
+            var gamePlayer = new GamePlayer();
             string gameToPlay;
             bool continuePlaying = true;
 
@@ -24,10 +24,10 @@ namespace Dice
                 switch (gameToPlay)
                 {
                     case "Dice":
-                        diceRoll.PlayDice();
+                        gamePlayer.PlayDice();
                         break;
                     case "Yahtzee":
-                        diceRoll.PlayYahtzee();
+                        gamePlayer.PlayYahtzee();
                         break;
                     case "q":
                         continuePlaying = false;
